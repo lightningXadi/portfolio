@@ -1,0 +1,325 @@
+/* Root Variables for Easy Theme Change */
+:root {
+  /* Background colors */
+  --body-bg-start: #000000;   /* Dark blue background start */
+  --body-bg-end: #511069;     /* Blue background end */
+
+  /* Main Text colors */
+  --text-color: #e0dedf;      /* Default text color */
+  --header-color: #f8f9f4;    /* Header text */
+  --subheader-color: #e0dedf; /* Subheader / small text */
+
+  /* Accent colors (for buttons, highlights, glow) */
+  --accent-red: #99093c;      /* Red for important buttons, highlights, or hover effects */
+  --accent-light:#000000;    /* Light color for glow, inner highlights, subtle buttons */
+
+  /* Navigation Button colors */
+  --nav-btn-start: #511069;        /* Nav button gradient start */
+  --nav-btn-end: #000000;          /* Nav button gradient end */
+  --nav-btn-hover-start: var(--accent-light); /* Hover gradient start */
+  --nav-btn-hover-end:  #99093c;                /* Hover gradient end */
+  --nav-btn-hover-text: var(--accent-red);    /* Hover text color using red */
+
+  /* More Projects button */
+  --more-btn-bg-start: var(--accent-red);  /* Use red in gradient start */
+  --more-btn-bg-end: #000000;             /* Blue gradient end */
+  --more-btn-text: var(--accent-light);   /* Text color */
+  --more-btn-light: var(--accent-light);  /* Glow/light color */
+
+  /* Sections */
+  --section-bg: rgba(100, 55, 105, 0.8);  /* Semi-transparent section background */
+  --section-border: var(--accent-red);  /* Section border using red accent */
+  --section-text: #e0dedf;              /* Section text color */
+  --footer-text: var(--accent-light);   /* Footer text color */
+}
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, var(--body-bg-start), var(--body-bg-end), #3d62b9); /* optional extra colors */
+  background-size: 400% 400%; /* needed for smooth movement */
+  animation: gradientShift 15s ease infinite; /* link the animation */
+  color: var(--text-color);
+  padding: 20px;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--header-color);
+}
+
+header p {
+  font-size: 1rem;
+  color: var(--subheader-color);
+}
+
+/* Navigation */
+nav {
+  margin: 20px auto;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav button {
+  background: linear-gradient(135deg, var(--nav-btn-start), var(--nav-btn-end));
+  border: none;
+  padding: 15px 45px;
+  border-radius: 25px;
+  color: var(--text-color);
+  font-weight: 100;
+  cursor: pointer;
+  transition: 0.75s ease;
+  font-size: 1.45rem;
+}
+
+nav button:hover {
+  background: linear-gradient(135deg, var(--nav-btn-hover-start), var(--nav-btn-hover-end));
+  color: var(--nav-btn-hover-text);
+}
+
+/* More Projects Button */
+.more-projects-btn {
+  position: relative;
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--more-btn-text);
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  border-radius: 5px;
+  background: linear-gradient(135deg, var(--more-btn-bg-start), var(--more-btn-bg-end));
+  cursor: pointer;
+}
+
+.more-projects-btn span {
+  position: absolute;
+  display: block;
+}
+
+.more-projects-btn span:nth-child(1) {
+  border-radius: 30px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, transparent, var(--more-btn-light));
+  animation: animate1 2s linear infinite;
+}
+
+.more-projects-btn span:nth-child(2) {
+  border-radius: 30px;
+  top: -100%;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--more-btn-light));
+  animation: animate2 2s linear infinite;
+  animation-delay: 0.25s;
+}
+
+.more-projects-btn span:nth-child(3) {
+  border-radius: 30px;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(270deg, transparent, var(--more-btn-light));
+  animation: animate3 2s linear infinite;
+  animation-delay:0.5s;
+}
+
+.more-projects-btn span:nth-child(4) {
+  border-radius: 30px;
+  bottom: -100%;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, var(--more-btn-light));
+  animation: animate4 2s linear infinite;
+  animation-delay: 0.75s;
+}
+
+.more-projects-btn span:last-child {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes animate1 { 0% { left: -100%; } 50%, 100% { left: 100%; } }
+@keyframes animate2 { 0% { top: -100%; } 50%, 100% { top: 100%; } }
+@keyframes animate3 { 0% { right: -100%; } 50%, 100% { right: 100%; } }
+@keyframes animate4 { 0% { bottom: -100%; } 50%, 100% { bottom: 100%; } }
+
+.more-projects-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Sections */
+section {
+  background: rgba(255, 255, 255, 0.05); /* more transparent for bluish theme */
+  backdrop-filter: blur(35px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 900px;
+  width: 100%;
+  margin: 30px auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5	);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* subtle border for glass effect */
+  color: var(--section-text);
+}
+
+
+h2 {
+  margin-bottom: 15px;
+  color: (var(--section-text),#000000);
+  border-bottom: 2px solid var(--section-border);
+  padding-bottom: 5px;
+}
+
+/* Skills */
+ul {
+  list-style-type: square;
+  padding-left: 20px;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.project-card {
+  background: var(--section-bg);
+  backdrop-filter: blur(8px);
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.project-card iframe {
+  width: 100%;
+  height: 300px;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.project-card h3 {
+  margin: 10px 0;
+  color: var(--section-text);
+}
+
+/* Contact Links */
+a {
+  color: var(--section-text);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+.particles {
+  position: fixed;       /* stays behind everything */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;  /* so it doesn’t block clicks */
+  z-index: 0;            /* behind content */
+  background: transparent;
+}
+
+/* Create particle dots using pseudo-elements */
+.particles::before,
+.particles::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--more-btn-bg-start); /* or any color you like */
+  border-radius: 50%;
+  animation: floatParticles 10s linear infinite;
+}
+
+.particles::before {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.particles::after {
+  top: 70%;
+  left: 80%;
+  animation-delay: 5s;
+}
+
+@keyframes floatParticles {
+  0% { transform: translateY(0) translateX(0); opacity: 1; }
+  50% { transform: translateY(-100px) translateX(50px); opacity: 0.5; }
+  100% { transform: translateY(0) translateX(0); opacity: 1; }
+}
+
+
+/* Footer */
+footer {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--footer-text);
+}
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 15px;
+}
+
+.social-icons a {
+  color: var(--header-color); /* Use your theme color */
+  font-size: 2rem;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--more-btn-bg-start); /* Change on hover */
+  transform: scale(1.2);
+}
+
+
+/* Responsive */
+@media (max-width: 600px) {
+  header h1 { font-size: 2rem; }
+  header p { font-size: 0.9rem; }
+  .project-card iframe { height: 200px; }
+  nav button { padding: 8px 15px; font-size: 0.9rem; }
+}
