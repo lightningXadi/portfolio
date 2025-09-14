@@ -23,8 +23,8 @@
   /* More Projects button */
   --more-btn-bg-start: var(--accent-red);  /* Use red in gradient start */
   --more-btn-bg-end: #000000;             /* Blue gradient end */
-  --more-btn-text: var(--accent-light);   /* Text color */
-  --more-btn-light: var(--accent-light);  /* Glow/light color */
+  --more-btn-text: #ffffff;   /* Text color */
+  --more-btn-light:  #ffffff;  /* Glow/light color */
 
   /* Sections */
   --section-bg: rgba(100, 55, 105, 0.8);  /* Semi-transparent section background */
@@ -323,3 +323,4 @@ footer {
   .project-card iframe { height: 200px; }
   nav button { padding: 8px 15px; font-size: 0.9rem; }
 }
+
